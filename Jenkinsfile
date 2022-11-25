@@ -4,7 +4,7 @@ import groovy.json.JsonSlurperClassic
   echo 'Starting the Process1...'
 
 node {
-    def toolbelt = tool 'toolbelt'
+
 	
     def SF_CONSUMER_KEY=env.SF_CONSUMER_KEY
     echo SF_CONSUMER_KEY
@@ -16,8 +16,8 @@ node {
     echo SERVER_KEY_CREDENTIALS_ID
     def DEPLOYDIR='src'
     def TEST_LEVEL='RunLocalTests'
-    //def SF_INSTANCE_URL = 'https://test.salesforce.com'
-    
+    def SF_INSTANCE_URL = 'https://test.salesforce.com'
+    def toolbelt = tool 'toolbelt'
     
     //echo SF_INSTANCE_URL
     // -------------------------------------------------------------------------
@@ -40,11 +40,11 @@ node {
 	
 	    withCredentials([file(credentialsId: SERVER_KEY_CREDENTIALS_ID, variable: 'server_key_file')]) {
 		// -------------------------------------------------------------------------
-		// Authenticate to Salesforce using the server key. ${SF_INSTANCE_URL} 
+		// Authenticate to Salesforce using the server key.  
 		// -------------------------------------------------------------------------
 
 		stage('Authorize to Salesforce') {
-			rc = command "${toolbelt}/sfdx auth:jwt:grant --instanceurl https://test.salesforce.com --clientid ${SF_CONSUMER_KEY} --jwtkeyfile ${server_key_file} --username ${SF_USERNAME} --setalias UAT"
+			rc = command "${toolbelt}/sfdx auth:jwt:grant --instanceurl ${SF_INSTANCE_URL} --clientid ${SF_CONSUMER_KEY} --jwtkeyfile ${server_key_file} --username ${SF_USERNAME} --setalias UAT"
 		    if (rc != 0) {
 			error 'Salesforce org authorization failed.'
 		    }
