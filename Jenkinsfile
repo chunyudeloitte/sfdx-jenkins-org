@@ -1,5 +1,8 @@
 #!groovy
 import groovy.json.JsonSlurperClassic
+
+  echo 'Starting the Process1...'
+
 node {
 
     def SF_CONSUMER_KEY=env.SF_CONSUMER_KEY
@@ -13,7 +16,7 @@ node {
     // Check out code from source control.
     // -------------------------------------------------------------------------
 
-   echo 'Starting the Process...'
+   echo 'Starting the Process2...'
 	
     stage('checkout source') {
         checkout scm
