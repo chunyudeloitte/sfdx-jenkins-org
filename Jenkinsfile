@@ -13,6 +13,8 @@ node {
     // Check out code from source control.
     // -------------------------------------------------------------------------
 
+   echo 'Starting the Process...'
+	
     stage('checkout source') {
         checkout scm
     }
