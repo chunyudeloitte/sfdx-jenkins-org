@@ -17,9 +17,10 @@ node {
     def DEPLOYDIR='src'
     def TEST_LEVEL='RunLocalTests'
     def SF_INSTANCE_URL = 'https://test.salesforce.com'
+    echo SF_INSTANCE_URL
     def toolbelt = tool 'toolbelt'
-    
-    //echo SF_INSTANCE_URL
+    echo toolbelt
+    //
     // -------------------------------------------------------------------------
     // Check out code from source control.
     // -------------------------------------------------------------------------
