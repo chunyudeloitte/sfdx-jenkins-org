@@ -6,12 +6,19 @@ import groovy.json.JsonSlurperClassic
 node {
 
     def SF_CONSUMER_KEY=env.SF_CONSUMER_KEY
+    echo SF_CONSUMER_KEY
+    
     def SF_USERNAME=env.SF_USERNAME
+    echo SF_USERNAME
+	
     def SERVER_KEY_CREDENTIALS_ID=env.SERVER_KEY_CREDENTIALS_ID
+    echo SERVER_KEY_CREDENTIALS_ID
     def DEPLOYDIR='src'
     def TEST_LEVEL='RunLocalTests'
     def SF_INSTANCE_URL = "https://test.salesforce.com"
     def toolbelt = tool 'toolbelt'
+    
+    echo SF_INSTANCE_URL
     // -------------------------------------------------------------------------
     // Check out code from source control.
     // -------------------------------------------------------------------------
